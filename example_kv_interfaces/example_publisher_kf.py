@@ -15,9 +15,10 @@ class ExamplePublisherKf(Node):
     def timer_callback(self):
         msg = Kf()
         msg.key = "key_float"
-        msg.val += self.i
+        msg.val = self.i
+        msg.status += self.i
         self.float_publisher_.publish(msg)
-        self.get_logger().info('Publishing: "%s","%f"' % (msg.key,  msg.val))
+        self.get_logger().info('Publishing: key:%s, val:%f, status:0x%08x' % (msg.key,  msg.val, msg.status))
         self.i += 0.1
 
 

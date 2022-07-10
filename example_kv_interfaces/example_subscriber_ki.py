@@ -3,7 +3,7 @@ from rclpy.node import Node
 
 from kv_interfaces.msg import Ki
 
-class ExampleSubscriberKf(Node):
+class ExampleSubscriberKi(Node):
 
     def __init__(self):
         super().__init__('example_subscriber_ki')
@@ -15,13 +15,12 @@ class ExampleSubscriberKf(Node):
         self.subscription # prevent unused variable warning
 
     def listener_callback(self, msg):
-        self.get_logger().info('I heard: "%s","%d"' % (msg.key, msg.val))
-
+        self.get_logger().info('I heard: key:%s, val:0x%x, status:0x%x' % (msg.key, msg.val, msg.status))
 
 def main(args=None):
     rclpy.init(args=args)
 
-    example_subscriber = ExampleSubscriberKf()
+    example_subscriber = ExampleSubscriberKi()
 
     rclpy.spin(example_subscriber)
 

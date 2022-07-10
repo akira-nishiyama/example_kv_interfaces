@@ -15,8 +15,7 @@ class ExampleSubscriberKf(Node):
         self.subscription # prevent unused variable warning
 
     def listener_callback(self, msg):
-        self.get_logger().info('I heard: "%s","%f"' % (msg.key, msg.val))
-
+        self.get_logger().info('I heard: msg:%s, val:%f, status:0x%08x' % (msg.key, msg.val, msg.status))
 
 def main(args=None):
     rclpy.init(args=args)
